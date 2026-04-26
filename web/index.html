@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Sports Tournament Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon svg-brand"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1 -10 0v-4z"/><path d="M5 5h-2v2a3 3 0 0 0 4 2.83"/><path d="M19 5h2v2a3 3 0 0 1 -4 2.83"/></svg></div>
+            <div>
+                <h1>ESPORTS</h1>
+                <span>CONTROL</span>
+            </div>
+        </div>
+        <nav class="nav">
+            <button class="nav-btn active" data-page="dashboard"><span class="nav-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M12 13l3 -3"/><path d="M4 13v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-5"/></svg></span>Dashboard</button>
+            <button class="nav-btn" data-page="players"><span class="nav-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg></span>Players</button>
+            <button class="nav-btn" data-page="queue"><span class="nav-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l3 3"/><path d="M3.05 11a9 9 0 1 1 .5 4"/><path d="M3 16v-5h5"/></svg></span>Queue</button>
+            <button class="nav-btn" data-page="matches"><span class="nav-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4m-2 -2v4"/><path d="M15 11l.01 0"/><path d="M18 13l.01 0"/><path d="M5 8h14a2 2 0 0 1 2 2v4a4 4 0 0 1 -4 4a4 4 0 0 1 -3 -1.35a3 3 0 0 0 -4 0a4 4 0 0 1 -3 1.35a4 4 0 0 1 -4 -4v-4a2 2 0 0 1 2 -2z"/></svg></span>Matches</button>
+            <button class="nav-btn" data-page="history"><span class="nav-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v4l2 2"/><path d="M3.05 11a9 9 0 1 1 .5 4"/><path d="M3 16v-5h5"/></svg></span>History</button>
+            <button class="nav-btn" data-page="winners"><span class="nav-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1 -10 0v-4z"/><path d="M5 5h-2v2a3 3 0 0 0 4 2.83"/><path d="M19 5h2v2a3 3 0 0 1 -4 2.83"/></svg></span>Winners</button>
+        </nav>
+        <div class="system-card">
+            <h3>SYSTEM STATUS</h3>
+            <p class="status ready">● READY</p>
+            <p class="status" id="liveStatus">● LIVE MATCH</p>
+            <p class="status" id="queueStatus">● QUEUE ACTIVE</p>
+        </div>
+    </aside>
+
+    <main class="app">
+        <header class="topbar">
+            <div>
+                <h2>E-Sports Tournament Manager</h2>
+                <p id="pageSubtitle">Dashboard Control Center</p>
+            </div>
+        </header>
+
+        <section class="page active" id="dashboardPage">
+            <section class="stat-grid">
+                <article class="stat-card purple">
+                    <span class="stat-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1 -10 0v-4z"/><path d="M5 5h-2v2a3 3 0 0 0 4 2.83"/><path d="M19 5h2v2a3 3 0 0 1 -4 2.83"/></svg></span><small>TOP PLAYER</small>
+                    <strong id="topPlayerName">No players</strong>
+                    <p id="topPlayerRecord">0W / 0L</p>
+                </article>
+                <article class="stat-card orange">
+                    <span class="stat-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2 -2.96 0 -7 -1 -8c0 3.04 -2 4.96 -3 6c-2 2.04 -3 4.04 -3 6a7 7 0 0 0 14 0c0 -1.97 -1 -3.97 -3 -6c-.8 2 -2.2 3 -4 2z"/></svg></span><small>BEST WIN RATE</small>
+                    <strong id="bestWinRate">0.0%</strong>
+                    <p id="bestWinRateName">No ranked player</p>
+                </article>
+                <article class="stat-card cyan">
+                    <span class="stat-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h4m-2 -2v4"/><path d="M15 11l.01 0"/><path d="M18 13l.01 0"/><path d="M5 8h14a2 2 0 0 1 2 2v4a4 4 0 0 1 -4 4a4 4 0 0 1 -3 -1.35a3 3 0 0 0 -4 0a4 4 0 0 1 -3 1.35a4 4 0 0 1 -4 -4v-4a2 2 0 0 1 2 -2z"/></svg></span><small>ACTIVE MATCH</small>
+                    <strong id="activeMatchTitle">Waiting</strong>
+                    <p id="activeMatchInfo">No active match</p>
+                </article>
+                <article class="stat-card gold">
+                    <span class="stat-icon"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"/><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"/></svg></span><small>QUEUE COUNT</small>
+                    <strong id="queueCount">0 players</strong>
+                    <p>Waiting room</p>
+                </article>
+            </section>
+
+            <section class="dashboard-split">
+                <article class="panel">
+                    <div class="panel-head">
+                        <h3>Tournament Snapshot</h3>
+                    </div>
+                    <ul class="snapshot-list">
+                        <li>Manual Queue manages waiting players.</li>
+                        <li>Linked List stores history and winners.</li>
+                        <li>C++ backend serves this local website.</li>
+                        <li>Dashboard updates from live API calls.</li>
+                    </ul>
+                </article>
+                <article class="panel">
+                    <div class="panel-head">
+                        <h3>Next Match Preview</h3><span>LIVE QUEUE</span>
+                    </div>
+                    <div class="versus" id="nextMatchPreview"></div>
+                </article>
+            </section>
+        </section>
+
+        <section class="page" id="playersPage">
+            <div class="section-title">PLAYER COMMAND CENTER</div>
+            <form class="command-panel" id="playerForm">
+                <input name="id" placeholder="Player ID" required />
+                <input name="name" placeholder="Player Name" required />
+                <input name="age" placeholder="Age" type="number" required />
+                <input name="gameName" placeholder="Game" required />
+                <input name="rank" placeholder="Rank" required />
+                <button class="btn primary" type="submit">Add</button>
+                <button class="btn success" type="button" id="updatePlayerBtn">Update</button>
+                <button class="btn danger" type="button" id="deletePlayerBtn">Delete</button>
+                <button class="btn ghost" type="reset">Clear</button>
+            </form>
+
+            <div class="roster-layout">
+                <article class="panel">
+                    <div class="panel-head"><h3>Player Roster</h3><span>GAMING LIST</span></div>
+                    <div class="roster-list" id="playersList"></div>
+                </article>
+                <article class="profile-panel">
+                    <div class="profile-title">PLAYER PROFILE</div>
+                    <div class="profile-hero">
+                        <div class="avatar"><svg class="ti" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z"/><path d="M7 10h4"/><path d="M7 14h3"/><path d="M15 10h2"/><path d="M15 14h2"/></svg></div>
+                        <div><h3 id="profileName">Select a player</h3><span id="profileId">ID —</span></div>
+                    </div>
+                    <div class="profile-data" id="profileData"></div>
+                    <button class="btn primary full" id="profileQueueBtn">Add to Queue</button>
+                    <button class="btn success full" id="profileLoadBtn">Load to Form</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="page" id="queuePage">
+            <div class="versus queue-vs" id="queueVersus"></div>
+            <div class="section-title">QUEUE OPERATIONS</div>
+            <div class="queue-rule-note">Only players from the same game can stay in the same queue.</div>
+            <form class="command-panel wide" id="queueForm">
+                <input name="id" placeholder="Enter Player ID" required />
+                <button class="btn success" type="submit">Add to Queue</button>
+                <button class="btn primary" type="button" id="startMatchBtn">Start Match</button>
+                <button class="btn danger" type="button" id="resetQueueBtn">Reset Queue</button>
+            </form>
+            <div class="section-title">LIVE QUEUE</div>
+            <div class="queue-list" id="queueList"></div>
+        </section>
+
+        <section class="page" id="matchesPage">
+            <article class="panel match-arena">
+                <div class="panel-head"><h3>Live Match Arena</h3><span id="matchState">WAITING</span></div>
+                <div class="arena-versus">
+                    <div class="arena-player" id="arenaP1">Waiting</div>
+                    <strong>VS</strong>
+                    <div class="arena-player" id="arenaP2">Waiting</div>
+                </div>
+                <form class="command-panel match-form" id="resultForm">
+                    <input name="winner" placeholder="Winner Name" required />
+                    <input name="score" placeholder="Score e.g. 2-1" required />
+                    <input name="round" placeholder="Round e.g. Final" required />
+                    <button class="btn success" type="submit">Record Result</button>
+                </form>
+            </article>
+        </section>
+
+        <section class="page" id="historyPage">
+            <article class="panel">
+                <div class="panel-head"><h3>Match History</h3><button class="btn danger small" id="clearHistoryBtn">Clear</button></div>
+                <div class="history-list" id="historyList"></div>
+            </article>
+        </section>
+
+        <section class="page" id="winnersPage">
+            <article class="panel">
+                <div class="panel-head"><h3>Winners Board</h3></div>
+                <div class="winners-list" id="winnersList"></div>
+            </article>
+        </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+</body>
+</html>
