@@ -460,10 +460,15 @@ private:
 
     void loadSampleData() {
         string ignored;
-        addPlayer({"P001", "Ayaan", 20, "Valorant", "Diamond"}, ignored);
-        addPlayer({"P002", "Sara", 21, "Dota 2", "Immortal"}, ignored);
-        addPlayer({"P003", "Omar", 19, "League", "Gold"}, ignored);
-        addPlayer({"P004", "Lina", 22, "CS2", "Master"}, ignored);
+        addPlayer({"P001", "Mohammed", 20, "Valorant", "Radiant"}, ignored);
+        addPlayer({"P002", "Ninja", 20, "League of Legends", "Challenger"}, ignored);
+        addPlayer({"P003", "Bassuony", 21, "Valorant", "Gold"}, ignored);
+        addPlayer({"P004", "Lina", 22, "League of Legends", "Master"}, ignored);
+        addPlayer({"P005", "Amr", 22, "Counter-Strike 2", "Master Guardian Elite"}, ignored);
+        addPlayer({"P006", "Kareem", 20, "Counter-Strike 2", "Legendary Eagle"}, ignored);
+        addPlayer({"P007", "Saif", 20, "Dota 2", "Divine"}, ignored);
+        addPlayer({"P008", "MohammedAB", 20, "Dota 2", "Ancient"}, ignored);
+        addPlayer({"P009", "Celine", 20, "Fortnite", "Master"}, ignored);
     }
 
     LinkedList<Player> players;

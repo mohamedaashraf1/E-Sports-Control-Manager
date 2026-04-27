@@ -69,10 +69,10 @@
                         <h3>Tournament Snapshot</h3>
                     </div>
                     <ul class="snapshot-list">
-                        <li>Manual Queue manages waiting players.</li>
-                        <li>Linked List stores history and winners.</li>
-                        <li>C++ backend serves this local website.</li>
-                        <li>Dashboard updates from live API calls.</li>
+                        <li><strong>Total Matches Played:</strong> <span id="totalMatches" class="loading">0</span></li>
+                        <li><strong>Active Players:</strong> <span id="activePlayers" class="loading">0</span></li>
+                        <li><strong>Most Played Game:</strong> <span id="mostPlayedGame" class="loading">—</span></li>
+                        <li><strong>Matches in Queue:</strong> <span id="matchesInQueue" class="loading">0</span></li>
                     </ul>
                 </article>
                 <article class="panel">
@@ -90,8 +90,20 @@
                 <input name="id" placeholder="Player ID" required />
                 <input name="name" placeholder="Player Name" required />
                 <input name="age" placeholder="Age" type="number" required />
-                <input name="gameName" placeholder="Game" required />
-                <input name="rank" placeholder="Rank" required />
+                <select name="gameName" id="gameSelect" required>
+                    <option value="">Select Game</option>
+                    <option value="Valorant">Valorant</option>
+                    <option value="League of Legends">League of Legends</option>
+                    <option value="Counter-Strike 2">Counter-Strike 2</option>
+                    <option value="Dota 2">Dota 2</option>
+                    <option value="Street Fighter 6">Street Fighter 6</option>
+                    <option value="Tekken 8">Tekken 8</option>
+                    <option value="StarCraft II">StarCraft II</option>
+                    <option value="Fortnite">Fortnite</option>
+                </select>
+                <select name="rank" id="rankSelect" required>
+                    <option value="">Select Rank</option>
+                </select>
                 <button class="btn primary" type="submit">Add</button>
                 <button class="btn success" type="button" id="updatePlayerBtn">Update</button>
                 <button class="btn danger" type="button" id="deletePlayerBtn">Delete</button>

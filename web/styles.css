@@ -189,6 +189,12 @@ body::before {
     border: 1px solid var(--line);
     background: rgba(13, 18, 38, 0.68);
     padding: 16px;
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+body.light-mode .system-card {
+    background: rgba(240, 242, 245, 0.8);
+    border: 1px solid rgba(99, 115, 129, 0.2);
 }
 
 .system-card h3 {
@@ -196,17 +202,45 @@ body::before {
     color: var(--muted);
     font-size: 11px;
     letter-spacing: 1.5px;
+    transition: color 0.4s ease;
+}
+
+body.light-mode .system-card h3 {
+    color: #637381;
 }
 
 .status {
     font-weight: 900;
     font-size: 13px;
     color: var(--muted);
+    transition: opacity 0.4s ease, color 0.4s ease;
+    opacity: 0.3;
 }
 
 .status.ready,
 .status.on {
     color: var(--green);
+    opacity: 1;
+}
+
+.status.active {
+    color: var(--red);
+    opacity: 1;
+    animation: pulse-status 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-status {
+    0%, 100% { text-shadow: 0 0 0 rgba(255, 77, 101, 0.4); }
+    50% { text-shadow: 0 0 12px rgba(255, 77, 101, 0.8); }
+}
+
+body.light-mode .status.active {
+    animation: pulse-status-light 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-status-light {
+    0%, 100% { text-shadow: 0 0 0 rgba(211, 47, 47, 0.3); }
+    50% { text-shadow: 0 0 12px rgba(211, 47, 47, 0.6); }
 }
 
 .app {
@@ -369,9 +403,60 @@ body::before {
 
 .snapshot-list {
     margin: 0;
-    padding-left: 18px;
+    padding: 0;
     color: var(--soft);
-    line-height: 1.9;
+    line-height: 2.2;
+    list-style: none;
+}
+
+.snapshot-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 14px;
+    background: rgba(54, 243, 255, 0.04);
+    border: 1px solid rgba(54, 243, 255, 0.08);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+body.light-mode .snapshot-list li {
+    background: rgba(0, 102, 204, 0.04);
+    border: 1px solid rgba(0, 102, 204, 0.1);
+}
+
+.snapshot-list li strong {
+    flex-shrink: 0;
+    color: var(--text);
+    font-weight: 950;
+    letter-spacing: 0.3px;
+}
+
+.snapshot-list .loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(54, 243, 255, 0.15);
+    border-radius: 8px;
+    padding: 4px 12px;
+    min-width: 50px;
+    animation: pulse-load 1.5s ease-in-out infinite;
+    color: var(--cyan);
+    font-weight: 900;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+body.light-mode .snapshot-list .loading {
+    background: rgba(0, 102, 204, 0.12);
+    color: #0066cc;
+}
+
+@keyframes pulse-load {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 .versus {
@@ -435,9 +520,58 @@ input {
     outline: none;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 input:focus {
     border-color: rgba(54, 243, 255, 0.62);
     box-shadow: 0 0 0 3px rgba(54, 243, 255, 0.08);
+}
+
+select {
+    min-height: 44px;
+    background: rgba(5, 13, 25, 0.82);
+    border: 1px solid rgba(118,142,220,0.18);
+    color: var(--text);
+    border-radius: 14px;
+    padding: 0 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: rgba(54, 243, 255, 0.62);
+    box-shadow: 0 0 0 3px rgba(54, 243, 255, 0.08);
+}
+
+select option {
+    background: #050711;
+    color: #edf2ff;
+}
+
+body.light-mode input,
+body.light-mode select {
+    background: #ffffff;
+    border: 1px solid rgba(99, 115, 129, 0.3);
+    color: #1a1a2e;
+}
+
+body.light-mode input:focus,
+body.light-mode select:focus {
+    border-color: rgba(0, 102, 204, 0.62);
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.08);
+}
+
+body.light-mode select option {
+    background: #ffffff;
+    color: #1a1a2e;
 }
 
 .btn {
